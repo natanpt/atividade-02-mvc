@@ -1,24 +1,42 @@
 <?php
-include "./controller/HomeController.php";
-include "./core/Conexao.php";
 
-if (isset($_GET['classe']) && isset($_GET['metodo'])) {
-    $classe = $_GET['classe'];
-    $metodo = $_GET['metodo'];
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-    $controllerFile = 'controller/'.$classe.'Controller.php';
+spl_autoload_register(function ($class_name) {
+	$class_file = __DIR__ . '/controller/' . $class_name . '.php';
+	if (file_exists($class_file)) {
+		include $class_file;
+	} else {
+		die("Erro: A classe '$class_name' não foi encontrada.");
+	}
+});
 
-    if (file_exists($controllerFile)) {
-        include $controllerFile;
-        $controllerClass = $classe.'Controller';
-        $controllerInstance = new $controllerClass();
+$classe = isset($_GET['classe']) ? ucfirst(strtolower($_GET['classe'])) . 'Controller' : null;
+$metodo = isset($_GET['metodo']) ? strtolower($_GET['metodo']) : null;
+$id = isset($_GET['id']) ? $_GET['id'] : null;
 
-        if (method_exists($controllerInstance, $metodo)) {
-            $controllerInstance->$metodo();
-        }
-    }
+if ($classe && $metodo) {
+	if (class_exists($classe)) {
+
+		$controller = new $classe();
+
+		if (method_exists($controller, $metodo)) {
+
+			if ($id !== null) {
+				$controller->$metodo($id);
+			} else {
+				$controller->$metodo();
+			}
+		} else {
+			die("Erro: O método '$metodo' não foi encontrado na classe '$classe'.");
+		}
+	} else {
+		die("Erro: A classe '$classe' não foi encontrada.");
+	}
 } else {
-    $homeController = new HomeController();
-    $homeController->index();
+	include 'controller/HomeController.php';
+	$homeController = new HomeController();
+	$homeController->index();
 }
-?>

@@ -2,7 +2,7 @@
 
 include "Conexao.php";
 
-$pdo = Conexao::conectar();
+$conexao = Conexao::conectar();
 
 $data = '1927-07-24';
 $horario = '12:04:32';
@@ -11,7 +11,7 @@ $status = 'OK';
 
 $sql = "INSERT INTO agendamentos (data, horario, duracao, status)
         VALUES (:data, :horario, :duracao, :status)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -31,7 +31,7 @@ $status = 'NOT OK';
 
 $sql = "INSERT INTO agendamentos (data, horario, duracao, status)
         VALUES (:data, :horario, :duracao, :status)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -51,7 +51,7 @@ $status = 'OK';
 
 $sql = "INSERT INTO agendamentos (data, horario, duracao, status)
         VALUES (:data, :horario, :duracao, :status)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -76,7 +76,7 @@ $bairro = 'Franciso Oco';
 
 $sql = "INSERT INTO clientes (nome, cpf, dt_nasc, whatsapp, logradouro, num, bairro)
         VALUES (:nome, :cpf, :dt_nasc, :whatsapp, :logradouro, :num, :bairro)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':cpf', $cpf);
@@ -102,7 +102,7 @@ $bairro = 'Monstequieu';
 
 $sql = "INSERT INTO clientes (nome, cpf, dt_nasc, whatsapp, logradouro, num, bairro)
         VALUES (:nome, :cpf, :dt_nasc, :whatsapp, :logradouro, :num, :bairro)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':cpf', $cpf);
@@ -128,7 +128,7 @@ $bairro = 'John Locke';
 
 $sql = "INSERT INTO clientes (nome, cpf, dt_nasc, whatsapp, logradouro, num, bairro)
         VALUES (:nome, :cpf, :dt_nasc, :whatsapp, :logradouro, :num, :bairro)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':cpf', $cpf);
@@ -152,7 +152,7 @@ $qtd = '5';
 
 $sql = "INSERT INTO compras (data, horario, qtd)
         VALUES (:data, :horario, :qtd)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -170,7 +170,7 @@ $qtd = '10';
 
 $sql = "INSERT INTO compras (data, horario, qtd)
         VALUES (:data, :horario, :qtd)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -188,7 +188,7 @@ $qtd = '2';
 
 $sql = "INSERT INTO compras (data, horario, qtd)
         VALUES (:data, :horario, :qtd)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':data', $data);
 $stmt->bindParam(':horario', $horario);
@@ -209,7 +209,7 @@ $categoria = 'Papelão';
 
 $sql = "INSERT INTO produtos (nome, valor, marca, categoria)
         VALUES (:nome, :valor, :marca, :categoria)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
@@ -229,7 +229,7 @@ $categoria = 'Madeira';
 
 $sql = "INSERT INTO produtos (nome, valor, marca, categoria)
         VALUES (:nome, :valor, :marca, :categoria)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
@@ -249,7 +249,7 @@ $categoria = 'Prata';
 
 $sql = "INSERT INTO produtos (nome, valor, marca, categoria)
         VALUES (:nome, :valor, :marca, :categoria)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
@@ -270,7 +270,7 @@ $descricao = 'OK';
 
 $sql = "INSERT INTO servicos (nome, valor, descricao)
         VALUES (:nome, :valor, :descricao)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
@@ -288,7 +288,7 @@ $descricao = 'OK';
 
 $sql = "INSERT INTO servicos (nome, valor, descricao)
         VALUES (:nome, :valor, :descricao)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
@@ -306,7 +306,7 @@ $descricao = 'OK';
 
 $sql = "INSERT INTO servicos (nome, valor, descricao)
         VALUES (:nome, :valor, :descricao)";
-$stmt = $pdo->prepare($sql);
+$stmt = $conexao->prepare($sql);
 
 $stmt->bindParam(':nome', $nome);
 $stmt->bindParam(':valor', $valor);
